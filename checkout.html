@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دار النور - إتمام الطلب</title>
+    <!-- Bootstrap CSS RTL -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS Animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="home.html" data-aos="fade-down">
+                <img src="BOKS/شعار_بسيط_كحلي_و_بيج_عن_مكتبة_-removebg-preview.png" alt="دار النور">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="home.html">الرئيسية</a></li>
+                    <li class="nav-item"><a class="nav-link" href="books.html">الكتب</a></li>
+                    <li class="nav-item"><a class="nav-link" href="home.html#about">عن الموقع</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <!-- Updated by auth.js -->
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container checkout-container">
+        <div class="row g-5">
+            <!-- Checkout Form -->
+            <div class="col-lg-8" data-aos="fade-right">
+                <div class="card border-0 shadow-sm p-4 rounded-4 bg-white text-dark">
+                    <h2 class="fw-bold mb-4"><i class="fas fa-truck ms-2 text-primary"></i> بيانات الشحن</h2>
+                    <form id="checkout-form">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label">الاسم الكامل</label>
+                                <input type="text" class="form-control" id="fullName" required placeholder="أحمد محمد">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">رقم الهاتف</label>
+                                <input type="tel" class="form-control" id="phone" required placeholder="01xxxxxxxxx">
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">العنوان بالتفصيل</label>
+                                <input type="text" class="form-control" id="address" required
+                                    placeholder="الشارع، المنطقة، المدينة">
+                            </div>
+                        </div>
+
+                        <hr class="my-5">
+
+                        <h2 class="fw-bold mb-4"><i class="fas fa-credit-card ms-2 text-primary"></i> طريقة الدفع</h2>
+                        <div class="row g-3 mb-4">
+                            <div class="col-md-4">
+                                <div class="payment-card text-center active" onclick="selectPayment(this, 'credit')">
+                                    <i class="fas fa-credit-card"></i>
+                                    <span>بطاقة ائتمان</span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="payment-card text-center" onclick="selectPayment(this, 'paypal')">
+                                    <i class="fab fa-paypal"></i>
+                                    <span>بايبال</span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="payment-card text-center" onclick="selectPayment(this, 'cash')">
+                                    <i class="fas fa-money-bill-wave"></i>
+                                    <span>الدفع عند الاستلام</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Credit Card Details (Optional reveal) -->
+                        <div id="card-details" class="row g-3">
+                            <div class="col-12">
+                                <label class="form-label">رقم البطاقة</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                                    <input type="text" class="form-control" placeholder="**** **** **** ****">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">تاريخ الانتهاء</label>
+                                <input type="text" class="form-control" placeholder="MM/YY">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">رمز التحقق (CVV)</label>
+                                <input type="text" class="form-control" placeholder="123">
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-custom mt-5 py-3 fs-5">تأكيد الطلب وشراء الآن</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Order Summary -->
+            <div class="col-lg-4" data-aos="fade-left">
+                <div class="card summary-card p-4">
+                    <h4 class="fw-bold mb-4">ملخص الطلب</h4>
+                    <div id="checkout-items" class="mb-4">
+                        <!-- Items injected by checkout.js -->
+                    </div>
+                    <hr>
+                    <div class="d-flex justify-content-between mb-2">
+                        <span>المجموع الفرعي:</span>
+                        <span id="subtotal">0 جنيه</span>
+                    </div>
+                    <div class="d-flex justify-content-between mb-2">
+                        <span>مصاريف الشحن:</span>
+                        <span class="text-success">مجاناً</span>
+                    </div>
+                    <hr>
+                    <div class="d-flex justify-content-between mb-4 fs-5 fw-bold text-primary">
+                        <span>الإجمالي الإجمالي:</span>
+                        <span id="grand-total">0 جنيه</span>
+                    </div>
+                    <p class="small text-muted text-center"><i class="fas fa-shield-alt ms-1"></i> تسوق آمن 100% ومشفر
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="mt-5">
+        <div class="container text-center">
+            <p class="mb-0">جميع الحقوق محفوظة &copy; 2025 دار النور.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="books-data.js"></script>
+    <script src="auth.js"></script>
+    <script src="cart.js"></script>
+    <script>
+        AOS.init({ once: true });
+
+        let selectedMethod = 'credit';
+
+        function selectPayment(el, method) {
+            document.querySelectorAll('.payment-card').forEach(c => c.classList.remove('active'));
+            el.classList.add('active');
+            selectedMethod = method;
+
+            const cardDetails = document.getElementById('card-details');
+            if (method !== 'credit') {
+                cardDetails.style.opacity = '0.5';
+                cardDetails.style.pointerEvents = 'none';
+            } else {
+                cardDetails.style.opacity = '1';
+                cardDetails.style.pointerEvents = 'auto';
+            }
+        }
+
+        // Checkout page specific logic
+        window.addEventListener('load', () => {
+            const itemsContainer = document.getElementById('checkout-items');
+            const subtotalEl = document.getElementById('subtotal');
+            const grandTotalEl = document.getElementById('grand-total');
+
+            let cart = getCart();
+            if (cart.length === 0) {
+                window.location.href = 'home.html';
+                return;
+            }
+
+            let total = 0;
+            let html = '';
+
+            cart.forEach(item => {
+                let book = booksData.find(b => b.id == item.id);
+                if (book) {
+                    let priceNum = parseInt(book.price.replace(/[^0-9]/g, ''));
+                    total += priceNum * item.qty;
+                    html += `
+                        <div class="order-item d-flex align-items-center mb-3">
+                            <img src="${book.image}" alt="${book.title}" class="me-3">
+                            <div class="flex-grow-1 ms-3">
+                                <h6 class="mb-0 fw-bold">${book.title}</h6>
+                                <small class="text-muted">الكمية: ${item.qty}</small>
+                            </div>
+                            <div class="fw-bold">${priceNum * item.qty} جنيه</div>
+                        </div>
+                    `;
+                }
+            });
+
+            itemsContainer.innerHTML = html;
+            subtotalEl.textContent = total + ' جنيه';
+            grandTotalEl.textContent = total + ' جنيه';
+
+            // Auto-fill user info if logged in
+            if (auth.isLoggedIn()) {
+                const user = auth.getUser();
+                document.getElementById('fullName').value = user.fullname;
+            }
+        });
+
+        document.getElementById('checkout-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            // Premium simple animation/alert
+            const btn = e.target.querySelector('button[type="submit"]');
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin ms-2"></i> جاري معالجة الطلب...';
+            btn.disabled = true;
+
+            setTimeout(() => {
+                Swal.fire({
+                    title: 'تهانينا! 🎉',
+                    text: 'تم إتمام طلبك بنجاح. سنقوم بالتواصل معك لتأكيد الشحن.',
+                    icon: 'success',
+                    confirmButtonText: 'العودة للرئيسية',
+                    confirmButtonColor: 'var(--primary-color)',
+                    allowOutsideClick: false
+                }).then(() => {
+                    localStorage.removeItem('cart');
+                    window.location.href = 'home.html';
+                });
+            }, 2000);
+        });
+    </script>
+
+</body>
+
+</html>

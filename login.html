@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل الدخول - دار النور</title>
+    <!-- Bootstrap CSS RTL -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS Animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="home.html">
+                <img src="BOKS/شعار_بسيط_كحلي_و_بيج_عن_مكتبة_-removebg-preview.png" alt="دار النور">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="home.html">الرئيسية</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="books.html">الكتب</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">عن الموقع</a>
+                    </li>
+                </ul>
+                <div class="nav-actions">
+                    <a href="login.html" class="nav-icon active" title="تسجيل الدخول">
+                        <i class="fas fa-user"></i>
+                    </a>
+                    <a href="#" class="nav-icon" title="سلة المشتريات">
+                        <i class="fas fa-shopping-cart"></i>
+                    </a>
+                    <a href="sign.html" class="btn-nav-primary">حساب جديد</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Auth Page -->
+    <div class="auth-page">
+        <div class="container d-flex justify-content-center">
+            <div class="auth-card" data-aos="zoom-in" data-aos-duration="800">
+                <h2>مرحباً بك مجدداً</h2>
+                <form>
+                    <div class="mb-4">
+                        <label for="email" class="form-label">البريد الإلكتروني</label>
+                        <input type="email" class="form-control" id="email" placeholder="name@example.com" required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="password" class="form-label">كلمة المرور</label>
+                        <input type="password" class="form-control" id="password" placeholder="••••••••" required>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="rememberMe">
+                            <label class="form-check-label text-muted" for="rememberMe" style="font-size:0.9rem;">
+                                تذكرني
+                            </label>
+                        </div>
+                        <a href="#" class="text-decoration-none"
+                            style="color:var(--secondary-color); font-size:0.9rem; font-weight:600;">نسيت كلمة
+                            المرور؟</a>
+                    </div>
+                    <button type="submit" class="btn-custom py-3" style="font-size:1.1rem;">تسجيل الدخول</button>
+
+                    <div class="auth-links">
+                        <p class="text-muted mb-0">ليس لديك حساب؟ <a href="sign.html">إنشاء حساب جديد</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap & AOS JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="auth.js"></script>
+    <script src="login.js"></script>
+    <script>AOS.init({ once: true });</script>
+</body>
+
+</html>

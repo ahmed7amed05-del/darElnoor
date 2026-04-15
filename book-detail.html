@@ -1,0 +1,333 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تفاصيل الكتاب - دار النور</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .book-details-card {
+            background: white;
+            border-radius: 30px;
+            box-shadow: var(--shadow-lg);
+            padding: 60px 50px;
+            margin-top: -60px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .book-cover {
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, .2);
+            width: 100%;
+            max-width: 280px;
+            transition: var(--transition);
+        }
+
+        .book-cover:hover {
+            transform: scale(1.03) rotate(-2deg);
+        }
+
+        .book-title {
+            color: var(--primary-color);
+            font-weight: 800;
+            font-size: 2.2rem;
+        }
+
+        .book-author-link {
+            color: var(--secondary-color);
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+
+        .book-author-link:hover {
+            color: var(--primary-color);
+        }
+
+        .price-box {
+            background: linear-gradient(135deg, rgba(212, 175, 55, .1), rgba(212, 175, 55, .2));
+            border: 2px dashed var(--secondary-color);
+            border-radius: 18px;
+            padding: 20px 30px;
+            display: inline-block;
+            margin: 20px 0;
+        }
+
+        .price-current {
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--secondary-color);
+        }
+
+        .price-old {
+            font-size: 1rem;
+            color: #aaa;
+            text-decoration: line-through;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 13px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, .06);
+            font-size: 1rem;
+        }
+
+        .info-row span:first-child {
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .btn-cart {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 13px 35px;
+            font-weight: 700;
+            font-size: 1.05rem;
+            transition: var(--transition);
+        }
+
+        .btn-cart:hover {
+            background: var(--secondary-color);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, .4);
+        }
+
+        .btn-fav {
+            background: transparent;
+            border: 2px solid #ddd;
+            border-radius: 50px;
+            padding: 13px 20px;
+            color: #999;
+            font-size: 1.1rem;
+            transition: var(--transition);
+        }
+
+        .btn-fav:hover {
+            border-color: #e74c3c;
+            color: #e74c3c;
+        }
+
+        .section-divider {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            border-right: 5px solid var(--secondary-color);
+            padding-right: 15px;
+            margin: 50px 0 25px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="home.html"><img src="BOKS/شعار_بسيط_كحلي_و_بيج_عن_مكتبة_-removebg-preview.png"
+                    alt="دار النور"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navDetails"><span
+                    class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navDetails">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link" href="home.html">الرئيسية</a></li>
+                    <li class="nav-item"><a class="nav-link" href="books.html">الكتب</a></li>
+                    <li class="nav-item"><a class="nav-link" href="home.html#about">عن الموقع</a></li>
+                    <li class="nav-item"><a class="nav-link" href="dashboard.html">لوحة التحكم</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <a href="login.html" class="nav-icon"><i class="fas fa-user"></i></a>
+                    <a href="#" class="nav-icon position-relative" data-bs-toggle="offcanvas"
+                        data-bs-target="#cartOffcanvas" title="سلة المشتريات">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span
+                            class="cart-badge badge rounded-pill bg-danger position-absolute top-0 start-100 translate-middle"
+                            style="font-size: 0.6rem; display: none;">0</span>
+                    </a>
+                    <a href="sign.html" class="btn-nav-primary">حساب جديد</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="hero" style="padding:50px 0 110px;margin-bottom:0;border-radius:0;">
+        <div class="container text-center">
+            <p class="text-white opacity-75 mt-2">
+                <a href="home.html" class="text-white opacity-75 text-decoration-none">الرئيسية</a>
+                <i class="fas fa-angle-left mx-2 opacity-50"></i>
+                <a href="books.html" class="text-white opacity-75 text-decoration-none">الكتب</a>
+                <i class="fas fa-angle-left mx-2 opacity-50"></i>
+                <span id="breadcrumb-title">تفاصيل الكتاب</span>
+            </p>
+        </div>
+    </div>
+
+    <div id="book-container" class="container mb-5">
+        <!-- JS will inject content here -->
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <img src="BOKS/شعار_بسيط_كحلي_و_بيج_عن_مكتبة_-removebg-preview.png" alt="دار النور"
+                        style="height:70px;filter:brightness(0) invert(1);" class="mb-3">
+                    <p>دار النور هي وجهتك الأولى لاكتشاف عالم المعرفة. كتب عربية ومترجمة لجميع الأذواق.</p>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <h5 class="fw-bold text-white mb-3">روابط هامة</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="home.html" style="color:rgba(255,255,255,.7);text-decoration:none;"><i
+                                    class="fas fa-angle-left me-2"></i>الرئيسية</a></li>
+                        <li class="mb-2"><a href="books.html"
+                                style="color:rgba(255,255,255,.7);text-decoration:none;"><i
+                                    class="fas fa-angle-left me-2"></i>الكتب</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-12">
+                    <h5 class="fw-bold text-white mb-3">تواصل معنا</h5>
+                    <p class="mb-1"><i class="fas fa-envelope me-2"></i>info@darnoor.com</p>
+                    <p><i class="fas fa-phone me-2"></i>+966 50 123 4567</p>
+                    <div class="mt-3 d-flex gap-3">
+                        <a href="#" style="color:white;font-size:1.4rem;"><i class="fab fa-twitter"></i></a>
+                        <a href="#" style="color:white;font-size:1.4rem;"><i class="fab fa-instagram"></i></a>
+                        <a href="#" style="color:white;font-size:1.4rem;"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-5 pt-4" style="border-top:1px solid rgba(255,255,255,.1);">
+                <p class="mb-0 text-white opacity-75">جميع الحقوق محفوظة &copy; 2025 دار النور.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Offcanvas -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="cartOffcanvas" aria-labelledby="cartOffcanvasLabel"
+        style="width: 380px; z-index: 10500;">
+        <div class="offcanvas-header border-bottom">
+            <h5 class="offcanvas-title" id="cartOffcanvasLabel"><i class="fas fa-shopping-cart ms-2"></i> سلة المشتريات
+            </h5>
+            <button type="button" class="btn-close text-reset m-0 p-0 fs-5" data-bs-dismiss="offcanvas"
+                aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body" id="cart-items-list">
+            <!-- Items injected by cart.js -->
+        </div>
+        <div class="offcanvas-cart-footer border-top p-3 bg-light">
+            <div class="d-flex justify-content-between mb-3 fw-bold fs-5">
+                <span>الإجمالي:</span>
+                <span id="cart-total-price">0 جنيه</span>
+            </div>
+            <a href="#" id="checkout-btn" class="btn btn-primary w-100 py-2">إتمام الطلب</a>
+        </div>
+    </div>
+
+    <!-- Reader Overlay -->
+    <div class="reader-overlay" id="reader-overlay">
+        <div class="progress-container">
+            <div class="progress-bar" id="reader-progress"></div>
+        </div>
+
+        <div class="reader-header" id="reader-header">
+            <div class="d-flex align-items-center gap-3">
+                <button class="control-btn" onclick="toggleReader()" title="إغلاق">
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+                <h5 class="mb-0 fw-bold" id="reader-title">قراءة الكتاب</h5>
+            </div>
+
+            <div class="reader-controls">
+                <button class="control-btn" onclick="toggleSettings()" title="الإعدادات">
+                    <i class="fas fa-cog"></i>
+                </button>
+                <button class="control-btn" onclick="toggleFullscreen()" title="ملء الشاشة">
+                    <i class="fas fa-expand"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="reader-body" id="reader-body">
+            <div class="reader-content-wrapper" id="reader-content-wrapper">
+                <h1 class="reader-page-title" id="reader-page-title">العنوان</h1>
+                <div class="reader-page-author" id="reader-page-author">المؤلف</div>
+
+                <div class="reader-text-content" id="reader-text-content">
+                    <p>جاري تحميل محتوى الكتاب...</p>
+                </div>
+
+                <div class="text-center mt-5 pt-5 border-top">
+                    <p class="text-muted small">نهاية الجزء المعروض حالياً</p>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="reader-footer" id="reader-footer">
+            <button class="btn btn-outline-light rounded-pill px-4" onclick="prevPage()">
+                <i class="fas fa-chevron-right me-2"></i>الصفحة السابقة
+            </button>
+            <span class="fw-bold" id="page-number">1 / 15</span>
+            <button class="btn btn-primary rounded-pill px-4" onclick="nextPage()">
+                الصفحة التالية<i class="fas fa-chevron-left ms-2"></i>
+            </button>
+        </div>
+
+        <!-- Settings Panel -->
+        <div class="settings-panel" id="settings-panel">
+            <button class="close-settings" onclick="toggleSettings()"><i class="fas fa-times"></i></button>
+            <h4 class="settings-title">إعدادات القراءة</h4>
+
+            <div class="setting-group">
+                <label class="setting-label">مظهر الصفحة</label>
+                <div class="theme-options">
+                    <button class="theme-btn theme-light active" onclick="setTheme('light')" title="فاتح">A</button>
+                    <button class="theme-btn theme-sepia" onclick="setTheme('sepia')" title="سيبيا">A</button>
+                    <button class="theme-btn theme-dark" onclick="setTheme('dark')" title="داكن">A</button>
+                </div>
+            </div>
+
+            <div class="setting-group">
+                <label class="setting-label">حجم الخط</label>
+                <div class="font-size-controls">
+                    <button class="font-btn" onclick="changeFontSize(-0.1)" title="تصغير">A-</button>
+                    <span id="font-size-val" class="fw-bold">100%</span>
+                    <button class="font-btn" onclick="changeFontSize(0.1)" title="تكبير">A+</button>
+                </div>
+            </div>
+
+            <div class="setting-group">
+                <label class="setting-label">نمط الخط</label>
+                <select class="form-select" onchange="setFontFamily(this.value)">
+                    <option value="'Cairo', sans-serif">Cairo (Default)</option>
+                    <option value="'Georgia', serif">Georgia (Classic)</option>
+                    <option value="'Times New Roman', serif">Times New Roman</option>
+                    <option value="Arial, sans-serif">Arial (Modern)</option>
+                </select>
+            </div>
+
+            <div class="mt-5">
+                <button class="btn btn-outline-danger w-100 rounded-pill" onclick="resetSettings()">
+                    <i class="fas fa-undo me-2"></i>إعادة ضبط الإعدادات
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="books-data.js"></script>
+    <script src="auth.js"></script>
+    <script src="cart.js"></script>
+    <script src="book-detail.js"></script>
+    <script>AOS.init({ once: true, offset: 80 });</script>
+</body>
+
+</html>
